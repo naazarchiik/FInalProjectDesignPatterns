@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Tetris/1.0.0": {
+        "dependencies": {
+          "ClassLibraryForTetris": "1.0.0"
+        },
+        "runtime": {
+          "Tetris.dll": {}
+        }
+      },
+      "ClassLibraryForTetris/1.0.0": {
+        "runtime": {
+          "ClassLibraryForTetris.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Tetris/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ClassLibraryForTetris/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

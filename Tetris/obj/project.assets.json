@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0-windows7.0": {}
+    "net7.0-windows7.0": {
+      "ClassLibraryForTetris/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ClassLibraryForTetris.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ClassLibraryForTetris.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ClassLibraryForTetris/1.0.0": {
+      "type": "project",
+      "path": "../ClassLibraryForTetris/ClassLibraryForTetris.csproj",
+      "msbuildProject": "../ClassLibraryForTetris/ClassLibraryForTetris.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0-windows7.0": []
+    "net7.0-windows7.0": [
+      "ClassLibraryForTetris >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\05naz\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\05naz\\Coursework\\Coursework\\ClassLibraryForTetris\\ClassLibraryForTetris.csproj": {
+              "projectPath": "C:\\Users\\05naz\\Coursework\\Coursework\\ClassLibraryForTetris\\ClassLibraryForTetris.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

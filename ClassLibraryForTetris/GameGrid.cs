@@ -33,8 +33,12 @@
         {
             for (int i = 0; i < Columns; i++)
             {
-                if (grid[r, i] == 0) return false;
+                if (grid[r, i] == 0)
+                {
+                    return false;
+                }
             }
+
             return true;
         }
 
@@ -57,7 +61,7 @@
 
         private void MoveRowDown(int r, int numRows)
         {
-            for (int i = 0; r < Columns; i++)
+            for (int i = 0; i < Columns; i++)
             {
                 grid[r + numRows, i] = grid[r, i];
                 grid[r, i] = 0;
@@ -68,7 +72,7 @@
         {
             int cleared = 0;
 
-            for (int i = Rows - 1; i >= 0; i++)
+            for (int i = Rows - 1; i >= 0; i--)
             {
                 if (IsRowFull(i))
                 {

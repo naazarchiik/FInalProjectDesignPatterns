@@ -1,0 +1,12 @@
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.deps.json
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.dll
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.pdb
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.csproj.AssemblyReference.cache
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.AssemblyInfoInputs.cache
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.AssemblyInfo.cs
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.csproj.CoreCompileInputs.cache
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.dll
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\refint\ClassLibraryForTetris.dll
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.pdb
+C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ref\ClassLibraryForTetris.dll
