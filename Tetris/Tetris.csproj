@@ -18,6 +18,12 @@
     <None Remove="Images\Block-T.png" />
     <None Remove="Images\Block-Z.png" />
     <None Remove="Images\Icon.ico" />
+    <None Remove="Images\Logo.png" />
+    <None Remove="Images\MainMenu.png" />
+    <None Remove="Images\MainMenu_cleanup %281%29.png" />
+    <None Remove="Images\MainMenu_cleanup.png" />
+    <None Remove="Images\Pause.png" />
+    <None Remove="Images\Play.png" />
     <None Remove="Images\TileBlue.png" />
     <None Remove="Images\TileCyan.png" />
     <None Remove="Images\TileEmpty.png" />
@@ -26,6 +32,7 @@
     <None Remove="Images\TilePurple.png" />
     <None Remove="Images\TileRed.png" />
     <None Remove="Images\TileYellow.png" />
+    <None Remove="Pause.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +40,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\Background.png" />
     <Resource Include="Images\Block-Empty.png" />
     <Resource Include="Images\Block-I.png" />
     <Resource Include="Images\Block-J.png" />
@@ -42,7 +48,7 @@
     <Resource Include="Images\Block-S.png" />
     <Resource Include="Images\Block-T.png" />
     <Resource Include="Images\Block-Z.png" />
-    <Resource Include="Images\Icon.ico" />
+    <Resource Include="Images\MainMenu.png" />
     <Resource Include="Images\TileBlue.png" />
     <Resource Include="Images\TileCyan.png" />
     <Resource Include="Images\TileEmpty.png" />

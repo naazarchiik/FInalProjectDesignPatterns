@@ -44,13 +44,16 @@ namespace Tetris
             new BitmapImage(new Uri("Images/Block-S.png", UriKind.Relative)),
             new BitmapImage(new Uri("Images/Block-T.png", UriKind.Relative)),
             new BitmapImage(new Uri("Images/Block-Z.png", UriKind.Relative))
-        };
+        };  
 
         private readonly Image[,] imageControls;
-        private List<int> scoreList = new List<int>();
-        private readonly int maxDelay = 1000;
+        private readonly List<int> scoreList = new List<int>();
+        private readonly int maxDelay = 1000;        
         private readonly int minDelay = 75;
-        private readonly int delayIncrease = 25;
+        private readonly int delayIncrease = 25;       
+
+        private bool isPaused = false;
+        private bool isGameLoopRunning = true;
 
         private GameState gameState = new GameState();
 
@@ -58,6 +61,11 @@ namespace Tetris
         {
             InitializeComponent();
             imageControls = SetupGameCanvas(gameState.GameGrid);
+        }
+
+        private void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Visible;
         }
 
         private Image[,] SetupGameCanvas(GameGrid grid)
@@ -145,51 +153,73 @@ namespace Tetris
             DrawHoldBlock(gameState.HoldBlock);
             ScoreText.Text = $"Score: {gameState.Score}";           
         }
-        
+
         private async Task GameLoop()
-        {          
+        {            
             Draw(gameState);
-            
-            while (!gameState.GameOver)
-            {
+            await Task.Delay(50);
+
+            while (!gameState.GameOver && isGameLoopRunning)
+            {  
                 int delay = Math.Max(minDelay, maxDelay - ((gameState.Score / 100) * delayIncrease));
                 await Task.Delay(delay);
-                gameState.MoveBlockDown();
-                Draw(gameState);
+                         
+                if (!isPaused)
+                {                             
+                    gameState.MoveBlockDown();
+                    Draw(gameState);
+                }
             }
 
-            GameOverMenu.Visibility = Visibility.Visible;
-            FinalScoreText.Text = $"Score: {gameState.Score}";         
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (gameState.GameOver)
+            if (!isGameLoopRunning)
             {
                 return;
             }
 
-            switch(e.Key)
+            GameOverMenu.Visibility = Visibility.Visible;
+            FinalScoreText.Text = $"Score: {gameState.Score}";
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (gameState.GameOver || isPaused)
+            {
+                return;
+            }
+
+            switch (e.Key)
             {
                 case Key.Left:
+                    gameState.MoveBlockLeft();
+                    break;
+                case Key.A:
                     gameState.MoveBlockLeft();
                     break;
                 case Key.Right:
                     gameState.MoveBlockRight();
                     break;
+                case Key.D:
+                    gameState.MoveBlockRight();
+                    break;
                 case Key.Down: 
+                    gameState.MoveBlockDown();
+                    break;
+                case Key.S:
                     gameState.MoveBlockDown();
                     break;
                 case Key.Up:
                     gameState.RotateBlockCW();
                     break;
-                case Key.Z:
+                case Key.W:
+                    gameState.RotateBlockCW();
+                    break;
+                case Key.R:
                     gameState.RotateBlockCCW();
                     break;
-                case Key.C:
+                case Key.E:
                     gameState.HoldingBlock();
                     break;
-                case Key.Space:
+                case Key.Tab:
                     gameState.DropBlock();
                     break;
                 default: return;
@@ -198,19 +228,62 @@ namespace Tetris
             Draw(gameState);
         }
 
-        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void StartPlay_Click(object sender, RoutedEventArgs e)
+        {                      
+            if (isPaused)
+            {
+                isGameLoopRunning = true;
+                isPaused = false;
+            }
+            StartGame();
+        }
+
+        private async void StartGame()
+        {            
+            MainMenu.Visibility = Visibility.Hidden;            
             await GameLoop();
         }
 
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {                   
+            PauseGame();
+            PauseMenu.Visibility = Visibility.Visible;
+        }
+
+        private void PauseGame()
+        {                                                    
+            isGameLoopRunning = false; 
+            isPaused = true;           
+        }
+
+        private void ResumeButton_Click(object sender, RoutedEventArgs e)
+        {
+            PauseMenu.Visibility = Visibility.Hidden;
+            ResumeGame();            
+        }
+
+        private async void ResumeGame()
+        {                   
+            isGameLoopRunning = true;
+            isPaused = false;               
+            await GameLoop();
+        }
+
+        private void MenuButton_Click(object sender, RoutedEventArgs e)
+        {            
+            MainMenu.Visibility = Visibility.Visible;
+            PauseGame();
+            gameState = new GameState();                                  
+        }
+
         private async void PlayAgain_Click(object sender, RoutedEventArgs e)
-        {         
+        {
             scoreList.Add(gameState.Score);
             HighScore.Visibility = Visibility.Visible;
-            HighScore.Text = $"Highest score:  {GetHighestScore()}";          
+            HighScore.Text = $"Highest score: {GetHighestScore()}";
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
-            await GameLoop();           
+            await GameLoop();        
         }
 
         private int GetHighestScore()
