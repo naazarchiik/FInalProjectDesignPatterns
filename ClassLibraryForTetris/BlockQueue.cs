@@ -1,4 +1,5 @@
-﻿using ClassLibraryForTetris.Blocks;
+﻿using System;
+using ClassLibraryForTetris.Blocks;
 
 namespace ClassLibraryForTetris
 {
@@ -6,7 +7,40 @@ namespace ClassLibraryForTetris
     {
         private readonly Block[] blocks = new Block[]
         {
-            new IBlock();
-        } 
+            new IBlock(),
+            new JBlock(),
+            new LBlock(),
+            new OBlock(),
+            new SBlock(),
+            new TBlock(),
+            new ZBlock()
+        }; 
+
+        private readonly Random rand = new Random();
+
+        public Block NextBlock { get; private set; }
+
+        public BlockQueue() 
+        {
+            NextBlock = RandomBlock();
+        }
+
+        private Block RandomBlock()
+        {
+            return blocks[rand.Next(blocks.Length)];
+        }
+
+        public Block GetAndUpdate()
+        {
+            Block block = NextBlock;
+
+            do
+            {
+                NextBlock = RandomBlock();
+            } 
+            while (block.Id == NextBlock.Id);
+
+            return block;
+        }
     }
 }
