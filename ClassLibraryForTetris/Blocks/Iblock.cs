@@ -1,6 +1,6 @@
 ﻿namespace ClassLibraryForTetris.Blocks
 {
-    public class Iblock : Block
+    public class IBlock : Block
     {
         private readonly BlockPosition[][] tiles = new BlockPosition[][]
         {
