@@ -151,19 +151,18 @@ namespace Tetris
             DrawBlock(gameState.CurrentBlock);
             DrawNextBlock(gameState.BlockQueue);
             DrawHoldBlock(gameState.HoldBlock);
-            ScoreText.Text = $"Score: {gameState.Score}";           
+            ScoreText.Text = $"Рахунок: {gameState.Score}";           
         }
 
         private async Task GameLoop()
         {            
             Draw(gameState);
-            await Task.Delay(50);
 
             while (!gameState.GameOver && isGameLoopRunning)
             {  
                 int delay = Math.Max(minDelay, maxDelay - ((gameState.Score / 100) * delayIncrease));
                 await Task.Delay(delay);
-                         
+
                 if (!isPaused)
                 {                             
                     gameState.MoveBlockDown();
@@ -177,7 +176,7 @@ namespace Tetris
             }
 
             GameOverMenu.Visibility = Visibility.Visible;
-            FinalScoreText.Text = $"Score: {gameState.Score}";
+            FinalScoreText.Text = $"Рахунок: {gameState.Score}";
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -228,19 +227,14 @@ namespace Tetris
             Draw(gameState);
         }
 
-        private void StartPlay_Click(object sender, RoutedEventArgs e)
+        private async void StartPlay_Click(object sender, RoutedEventArgs e)
         {                      
-            if (isPaused)
+            MainMenu.Visibility = Visibility.Hidden;
+            if (!isGameLoopRunning)
             {
                 isGameLoopRunning = true;
-                isPaused = false;
-            }
-            StartGame();
-        }
-
-        private async void StartGame()
-        {            
-            MainMenu.Visibility = Visibility.Hidden;            
+                gameState = new GameState();
+            }                  
             await GameLoop();
         }
 
@@ -272,15 +266,14 @@ namespace Tetris
         private void MenuButton_Click(object sender, RoutedEventArgs e)
         {            
             MainMenu.Visibility = Visibility.Visible;
-            PauseGame();
-            gameState = new GameState();                                  
+            isGameLoopRunning = false;
         }
 
         private async void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
             scoreList.Add(gameState.Score);
             HighScore.Visibility = Visibility.Visible;
-            HighScore.Text = $"Highest score: {GetHighestScore()}";
+            HighScore.Text = $"Рекорд: {GetHighestScore()}";
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
             await GameLoop();        
@@ -289,6 +282,18 @@ namespace Tetris
         private int GetHighestScore()
         {
             return scoreList.Max();
+        }
+
+        private void BackToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            gameState = new GameState();
+            GameOverMenu.Visibility = Visibility.Hidden;
+            MainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
