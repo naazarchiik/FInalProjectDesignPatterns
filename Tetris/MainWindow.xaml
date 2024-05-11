@@ -40,7 +40,7 @@
         <Grid x:Name="GameOverMenu" Background="#CC000000" Grid.RowSpan="2" Grid.ColumnSpan="3" Visibility="Hidden">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <TextBlock Text="Game Over" FontSize="48" TextAlignment="Center"/>
-                <TextBlock x:Name="FinalScoretext" Text="Score: " FontSize="36" TextAlignment="Center"/>
+                <TextBlock x:Name="FinalScoreText" Text="Score: " FontSize="36" TextAlignment="Center"/>
                 <Button x:Name="PlayAgain" Content="Play Again" Background="LightBlue" Margin="0, 20, 0, 0" Padding="5" Click="PlayAgain_Click"/>
             </StackPanel>
         </Grid>
