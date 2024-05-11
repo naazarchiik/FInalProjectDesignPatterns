@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClassLibraryForTetris")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8bf61e4131094c223e7e5040aeb28354ef35b718")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClassLibraryForTetris")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClassLibraryForTetris")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
