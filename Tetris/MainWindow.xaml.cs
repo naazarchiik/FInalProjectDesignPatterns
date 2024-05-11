@@ -47,6 +47,10 @@ namespace Tetris
         };
 
         private readonly Image[,] imageControls;
+        private List<int> scoreList = new List<int>();
+        private readonly int maxDelay = 1000;
+        private readonly int minDelay = 75;
+        private readonly int delayIncrease = 25;
 
         private GameState gameState = new GameState();
 
@@ -87,8 +91,9 @@ namespace Tetris
             {
                 for (int j = 0; j < grid.Columns; j++)
                 {
-                    int id = grid[i, j];
+                    int id = grid[i, j];                   
                     imageControls[i, j].Source = tileImages[id];
+                    imageControls[i, j].Opacity = 1;
                 }
             }
         }
@@ -96,8 +101,9 @@ namespace Tetris
         private void DrawBlock(Block block)
         {
             foreach (BlockPosition p in block.TilePosition())
-            {
+            {                
                 imageControls[p.Row, p.Column].Source = tileImages[block.Id];
+                imageControls[p.Row, p.Column].Opacity = 1;
             }
         }
 
@@ -119,28 +125,41 @@ namespace Tetris
             }
         }
 
+        private void DrawGhostBlock(Block block)
+        {
+            int dropDistance = gameState.BlockDropDistance();
+
+            foreach (BlockPosition p in block.TilePosition())
+            {
+                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
+                imageControls[p.Row + dropDistance, p.Column].Opacity = 0.1;
+            }
+        }
+
         private void Draw(GameState gameState)
         {
             DrawGrid(gameState.GameGrid);
+            DrawGhostBlock(gameState.CurrentBlock);
             DrawBlock(gameState.CurrentBlock);
             DrawNextBlock(gameState.BlockQueue);
             DrawHoldBlock(gameState.HoldBlock);
-            ScoreText.Text = $"Score: {gameState.Score}";    
+            ScoreText.Text = $"Score: {gameState.Score}";           
         }
-
+        
         private async Task GameLoop()
-        {
+        {          
             Draw(gameState);
-
+            
             while (!gameState.GameOver)
             {
-                await Task.Delay(500);
+                int delay = Math.Max(minDelay, maxDelay - ((gameState.Score / 100) * delayIncrease));
+                await Task.Delay(delay);
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
 
             GameOverMenu.Visibility = Visibility.Visible;
-            FinalScoreText.Text = $"Score: {gameState.Score}";
+            FinalScoreText.Text = $"Score: {gameState.Score}";         
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -170,6 +189,9 @@ namespace Tetris
                 case Key.C:
                     gameState.HoldingBlock();
                     break;
+                case Key.Space:
+                    gameState.DropBlock();
+                    break;
                 default: return;
             }
             
@@ -182,10 +204,18 @@ namespace Tetris
         }
 
         private async void PlayAgain_Click(object sender, RoutedEventArgs e)
-        {
+        {         
+            scoreList.Add(gameState.Score);
+            HighScore.Visibility = Visibility.Visible;
+            HighScore.Text = $"Highest score:  {GetHighestScore()}";          
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
-            await GameLoop();
+            await GameLoop();           
+        }
+
+        private int GetHighestScore()
+        {
+            return scoreList.Max();
         }
     }
 }
