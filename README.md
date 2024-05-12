@@ -41,3 +41,30 @@ fullness and removing full rows. These methods are used to remove rows after the
 
 The [GameState](./ClassLibraryForTetris/GameState.cs) class has no direct dependency on specific block implementations. It works with objects of type [Block](./ClassLibraryForTetris/Block.cs), which is 
 an abstract class. This makes it easy to replace specific block types with any others that conform to this interface.
+
+
+## Design Patterns
+
+### Observer
+
+This pattern is used to implement the mechanism of notification of changes in the object. In this code, watching for changes in the game happens from the outside through methods like 
+[RotateBlockCW](./ClassLibraryForTetris/GameState.cs#L77-L85), [MoveBlockLeft](./ClassLibraryForTetris/GameState.cs#L97-L105), etc., which change the state of the game and the blocks.
+
+### Strategy 
+
+This template allows you to replace algorithms regardless of the client that uses them. In this case, the methods RotateBlockCW, RotateBlockCCW, MoveBlockLeft, MoveBlockRight, MoveBlockDown, DropBlock in the [GameState](./ClassLibraryForTetris/GameState.cs) class are used to control the movement of blocks in the game. These methods use the current block ([CurrentBlock](./ClassLibraryForTetris/GameState.cs#L3-L25)), which can be of any type that is a descendant of the [Block](./ClassLibraryForTetris/Block.cs) class, because they are implemented in the Block abstract class, and the block movement algorithm itself depends on the specific implementation of this method in the subclass.
+
+### State 
+
+This pattern is used implicitly in the [GameState](./ClassLibraryForTetris/GameState.cs) class. This class stores game state such as current block, score, etc. Each operation, such as 
+[moving](./ClassLibraryForTetris/GameState.cs#L97-L105) a block or [rotating](./ClassLibraryForTetris/GameState.cs#L77-L85) it, changes the state of the game.
+
+### Factory Method 
+
+This pattern is used to create subclass objects based on some common interface. In this code, the [BlockQueue](./ClassLibraryForTetris/BlockQueue.cs) class uses a "factory method" in the 
+[RandomBlock](./ClassLibraryForTetris/BlockQueue.cs#L23-L31) method to create objects of Block subclasses (such as IBlock, JBlock, etc.) that are added to the block queue.
+
+### Template Method
+
+In this case, the [Block](./ClassLibraryForTetris/Block.cs) class is an abstract base class that defines the general algorithm for how blocks work in the Tetris game. It contains methods such as [RotateCW, RotateCCW, Move, Reset](./ClassLibraryForTetris/Block.cs#L27-L57) and is used to handle rotating, moving and resetting blocks.
+Each concrete type of block (such as [IBlock](./ClassLibraryForTetris/Blocks/Iblock.cs)) is a subclass of Block and overrides abstract methods and properties of the base class, such as [Tiles](./ClassLibraryForTetris/Blocks/Iblock.cs#L5-L11) and [StartOffset](./ClassLibraryForTetris/Blocks/Iblock.cs#L14). This allows each block type to have its own starting coordinates and describe its own unique tiles for each rotation.
