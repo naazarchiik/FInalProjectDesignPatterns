@@ -68,3 +68,21 @@ This pattern is used to create subclass objects based on some common interface. 
 
 In this case, the [Block](./ClassLibraryForTetris/Block.cs) class is an abstract base class that defines the general algorithm for how blocks work in the Tetris game. It contains methods such as [RotateCW, RotateCCW, Move, Reset](./ClassLibraryForTetris/Block.cs#L27-L57) and is used to handle rotating, moving and resetting blocks.
 Each concrete type of block (such as [IBlock](./ClassLibraryForTetris/Blocks/Iblock.cs)) is a subclass of Block and overrides abstract methods and properties of the base class, such as [Tiles](./ClassLibraryForTetris/Blocks/Iblock.cs#L5-L11) and [StartOffset](./ClassLibraryForTetris/Blocks/Iblock.cs#L14). This allows each block type to have its own starting coordinates and describe its own unique tiles for each rotation.
+
+
+## Refactoring Techniques 
+
+### Extract Method
+
+Methods such as [Draw, DrawGrid, DrawBlock, DrawNextBlock, DrawHoldBlock, DrawGhostBlock](./Tetris/MainWindow.xaml.cs#L96-L155) are extracted to handle specific graphical representations in the game. Extracting these methods helps keep the code cleaner and more structured.
+
+### Extract Superclass
+
+This technique involves extracting common behavior from multiple classes into a superclass. The [Block](./ClassLibraryForTetris/Block.cs) class serves as a superclass for various block types (e.g., IBlock, JBlock, etc.), demonstrating this refactoring technique.
+
+### Move Method
+
+This technique involves moving methods between classes to better encapsulate behavior. For instance, methods like [RotateCW, RotateCCW, Move, and Reset](./ClassLibraryForTetris/Block.cs#L27-L57) in the Block class encapsulate block-specific behavior and are moved into the Block class hierarchy.
+
+### Extract Interface 
+This technique involves extracting interfaces from classes to define common behavior. The Block class could potentially be extracted into an interface if multiple types of blocks need to share common behavior.
