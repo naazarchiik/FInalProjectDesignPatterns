@@ -1,0 +1,16 @@
+﻿<Window x:Class="Tetris.GameScoreForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tetris"
+        mc:Ignorable="d"
+        Title="GameScoreForm" Height="300" Width="200">
+    <Grid Background="Black">
+        <Label Content="Scores" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.057,-1.111" FontWeight="Bold" FontSize="18" Foreground="Red"/>
+        <Button x:Name="saveBtn" Content="Save" HorizontalAlignment="Center" Margin="0,237,0,0" VerticalAlignment="Top" Height="37" Width="141" Foreground="Black" Background="#FF0DFF00" FontWeight="Bold" FontSize="18" Click="saveBtn_Click"/>
+        <Label x:Name="scoreLbl" Content="" HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Foreground="White" FontSize="14" Width="180"/>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Center" Margin="0,206,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="140" Height="26" FontSize="16"/>
+
+    </Grid>
+</Window>

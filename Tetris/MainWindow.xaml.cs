@@ -177,6 +177,8 @@ namespace Tetris
 
             GameOverMenu.Visibility = Visibility.Visible;
             FinalScoreText.Text = $"Рахунок: {gameState.Score}";
+            new GameScoreForm(gameState.Score).ShowDialog();
+
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
