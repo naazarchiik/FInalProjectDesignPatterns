@@ -2,3 +2,7 @@
 /bin/
 /.vs/
 /x64/
+.vs/
+bin/
+obj/
+*.user
