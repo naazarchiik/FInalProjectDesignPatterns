@@ -10,3 +10,15 @@ C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\Clas
 C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\refint\ClassLibraryForTetris.dll
 C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.pdb
 C:\Users\05naz\Coursework\Coursework\ClassLibraryForTetris\obj\Debug\net7.0\ref\ClassLibraryForTetris.dll
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.deps.json
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.dll
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\bin\Debug\net7.0\ClassLibraryForTetris.pdb
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.GeneratedMSBuildEditorConfig.editorconfig
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.AssemblyInfoInputs.cache
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.AssemblyInfo.cs
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.csproj.CoreCompileInputs.cache
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.sourcelink.json
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.dll
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\refint\ClassLibraryForTetris.dll
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ClassLibraryForTetris.pdb
+D:\Навчання_2_курс\Pulls\3\FinalProjectDesignPatterns\ClassLibraryForTetris\obj\Debug\net7.0\ref\ClassLibraryForTetris.dll

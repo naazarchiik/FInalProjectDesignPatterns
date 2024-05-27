@@ -54,10 +54,7 @@
 
         public void HoldingBlock()
         {
-            if(!CanHold)
-            {
-                return;
-            }
+            if(!CanHold)return;
 
             if(HoldBlock == null)
             {
@@ -66,52 +63,49 @@
             }
             else
             {
-                Block tmp = CurrentBlock;
-                CurrentBlock = HoldBlock;
-                HoldBlock = tmp;
+                Swap(CurrentBlock, HoldBlock);
             }
 
             CanHold = false;
         }
-
-        public void RotateBlockCW()
+        private void Swap(Block block1, Block block2)
         {
-            CurrentBlock.RotateCW();
-
+            Block tmp = block1;
+            block1 = block2;
+            block2 = tmp;
+        }
+        private void RotateBlock(Action rotateAction, Action undoAction)
+        {
+            rotateAction();
+            if (!BlockFits()) undoAction();
+        }
+        private void MoveBlock(int rowDelta, int colDelta, Action onFail = null)
+        {
+            CurrentBlock.Move(rowDelta, colDelta);
             if (!BlockFits())
             {
-                CurrentBlock.RotateCCW();
+                CurrentBlock.Move(-rowDelta, -colDelta);
+                onFail?.Invoke();
             }
+        }
+        public void RotateBlockCW()
+        {
+            RotateBlock(() => CurrentBlock.RotateCW(), () => CurrentBlock.RotateCCW());
         }
 
         public void RotateBlockCCW()
         {
-            CurrentBlock.RotateCCW();
-
-            if (!BlockFits())
-            {
-                CurrentBlock.RotateCW();
-            }
+            RotateBlock(() => CurrentBlock.RotateCCW(), () => CurrentBlock.RotateCW());
         }
 
         public void MoveBlockLeft()
         {
-            CurrentBlock.Move(0, -1);
-
-            if (!BlockFits())
-            {
-                CurrentBlock.Move(0, 1);
-            }
+            MoveBlock(0, -1);
         }
 
         public void MoveBlockRight()
         {
-            CurrentBlock.Move(0, 1);
-
-            if (!BlockFits())
-            {
-                CurrentBlock.Move(0, -1);
-            }
+            MoveBlock(0, 1);
         }
 
         private bool IsGameOver()
@@ -141,13 +135,7 @@
 
         public void MoveBlockDown()
         {
-            CurrentBlock.Move(1, 0);
-
-            if (!BlockFits())
-            {
-                CurrentBlock.Move(-1, 0);
-                PlaceBlock();
-            }
+            MoveBlock(1, 0, PlaceBlock);
         }
 
         private int TileDropDistance(BlockPosition p)

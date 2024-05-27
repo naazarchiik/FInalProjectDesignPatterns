@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4r+Dz597ezIA2OI2VDOsIQw5uz1NFrEhUCety37z7STwfsXuutCTWtxzR/xc6RIYDHYwMj6RVa2CvWktSBq8rA==",
+  "dgSpecHash": "g2zX3xZbPXz/CO4YBKcWZP40viI4jJfAbzPvGkiwWhVXN1LnkAeweeetAx8lZtfyIkgBcRVL3qrBAaiZbIjfrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\05naz\\Coursework\\Coursework\\Tetris\\Tetris.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\05naz\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.18\\microsoft.windowsdesktop.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\05naz\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.18\\microsoft.netcore.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\05naz\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.18\\microsoft.aspnetcore.app.ref.7.0.18.nupkg.sha512",
-    "C:\\Users\\05naz\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.18\\microsoft.netcore.app.host.win-x64.7.0.18.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Навчання_2_курс\\Pulls\\3\\FinalProjectDesignPatterns\\Tetris\\Tetris.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
